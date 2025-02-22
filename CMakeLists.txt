@@ -16,6 +16,8 @@ set(PROJECT_SOURCES
   main.cpp
   src/objects/card.cpp
   src/objects/card.h
+  src/objects/gameobject.cpp
+  src/objects/gameobject.h
   src/windows/mainwindow.cpp
   src/windows/mainwindow.h
 )

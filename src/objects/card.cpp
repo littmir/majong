@@ -22,12 +22,6 @@ Card::SetInactive()
   this->setChecked(false);
 }
 
-void
-Card::SetPosition(unsigned int raw, unsigned int column)
-{
-  position_ = std::make_pair(raw, column);
-}
-
 bool
 Card::IsActive() const
 {

@@ -45,4 +45,23 @@ MainWindow::ProcessCard()
     card->SetActive();
     active_card_count_++;
   }
+
+  // check active card count
+  // and make inactive current selection if active cards more than 2
+  if (active_card_count_ > 2) {
+    card->SetInactive();
+    active_card_count_--;
+  }
+
+  // save active cards pair
+  switch (active_card_count_) {
+    case 1:
+      active_cards_pair_.first = card;
+      break;
+    case 2:
+      active_cards_pair_.second = card;
+      break;
+    default:
+      active_cards_pair_ = {nullptr, nullptr};
+  }
 }

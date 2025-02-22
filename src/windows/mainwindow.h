@@ -30,6 +30,7 @@ public slots:
 
 private:
   QGridLayout *grid_ = nullptr;
+  std::pair<Card *, Card *> active_cards_pair_ = {nullptr, nullptr};
 
   std::array<Card, CARD_COUNT> cards_;
   unsigned int active_card_count_ = 0;

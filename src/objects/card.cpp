@@ -16,3 +16,9 @@ Card::SetActive()
   is_active_ = !is_active_;
   setChecked(is_active_);
 }
+
+void
+Card::SetPosition(unsigned int raw, unsigned int column)
+{
+  position_ = std::make_pair(raw, column);
+}

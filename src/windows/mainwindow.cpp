@@ -17,6 +17,7 @@ MainWindow::CreateCards()
     grid_->addWidget(&cards_.at(i),
       static_cast<int>(raw), static_cast<int>(column));
     cards_.at(i).setText(QString::number(raw) + ", " + QString::number(column));
+    cards_.at(i).SetPosition(raw, column);
     column++;
     if (column == FIELD_SIZE) {
       column = 0;

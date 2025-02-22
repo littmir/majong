@@ -4,6 +4,7 @@
 #include "objects/card.h"
 
 #include <array>
+#include <utility>
 
 #include <qobjectdefs.h>
 #include <qwidget.h>
@@ -23,10 +24,15 @@ class MainWindow : public QWidget
 public:
   MainWindow();
 
+public slots:
+  void
+  ProcessCard();
+
 private:
   QGridLayout *grid_ = nullptr;
 
   std::array<Card, CARD_COUNT> cards_;
+  unsigned int active_card_count_ = 0;
 
   void
   CreateCards();

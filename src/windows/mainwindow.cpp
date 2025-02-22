@@ -1,11 +1,17 @@
 #include "src/windows/mainwindow.h"
 
+#include "objects/card.h"
+
 #include <qgridlayout.h>
 #include <qhashfunctions.h>
 
 MainWindow::MainWindow() : grid_(new QGridLayout(this))
 {
   CreateCards();
+
+  for (auto &card : cards_) {
+    connect(&card, &Card::clicked, this, &MainWindow::ProcessCard);
+  }
 }
 
 void
@@ -23,5 +29,20 @@ MainWindow::CreateCards()
       column = 0;
       raw++;
     }
+  }
+}
+
+void
+MainWindow::ProcessCard()
+{
+  auto *card = dynamic_cast<Card *>(sender());
+
+  // set card status
+  if (card->IsActive()) {
+    card->SetInactive();
+    active_card_count_--;
+  } else {
+    card->SetActive();
+    active_card_count_++;
   }
 }

@@ -16,9 +16,15 @@ public:
   void
   SetPosition(unsigned int raw, unsigned int column);
 
+  bool
+  IsActive() const;
+
 public slots:
   void
   SetActive();
+
+  void
+  SetInactive();
 
 private:
   const unsigned int card_side_size_ = 50;

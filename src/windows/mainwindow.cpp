@@ -1,6 +1,5 @@
 #include "src/windows/mainwindow.h"
 
-#include "common.h"
 #include "objects/card.h"
 
 #include <qgridlayout.h>
@@ -19,9 +18,9 @@ MainWindow::MainWindow() : grid_(new QGridLayout(this))
 void
 MainWindow::CreateCards()
 {
-  unsigned int raw = 1;
-  unsigned int column = 1;
-  for (unsigned int i = 0; i < CARD_COUNT; ++i) {
+  uint raw = 1;
+  uint column = 1;
+  for (uint i = 0; i < CARD_COUNT; ++i) {
     grid_->addWidget(&cards_.at(i),
       static_cast<int>(raw), static_cast<int>(column));
     cards_.at(i).setText(QString::number(raw) + ", " + QString::number(column));
@@ -71,9 +70,9 @@ MainWindow::ProcessCard()
 void
 MainWindow::CreateBorders()
 {
-  unsigned int raw = 0;
-  unsigned int column = 0;
-  for (unsigned int i = 0; i < BORDER_CARD_COUNT; ++i) {
+  uint raw = 0;
+  uint column = 0;
+  for (uint i = 0; i < BORDER_CARD_COUNT; ++i) {
     while (raw != 0 && raw != (FRAME_SIZE - 1)
            && column != 0 && column != (FRAME_SIZE - 1)) {
       column++;

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "objects/card.h"
+#include "common.h"
 
 #include <array>
 #include <utility>
@@ -41,7 +42,7 @@ private:
   std::pair<Card *, Card *> active_cards_pair_ = {nullptr, nullptr};
 
   std::array<Card, CARD_COUNT> cards_;
-  unsigned int active_card_count_ = 0;
+  uint active_card_count_ = 0;
   std::array<QLabel, BORDER_CARD_COUNT> borders_;
 
   void

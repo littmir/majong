@@ -8,6 +8,7 @@
 MainWindow::MainWindow() : grid_(new QGridLayout(this))
 {
   CreateCards();
+  CreateBorders();
 
   for (auto &card : cards_) {
     connect(&card, &Card::clicked, this, &MainWindow::ProcessCard);
@@ -17,16 +18,16 @@ MainWindow::MainWindow() : grid_(new QGridLayout(this))
 void
 MainWindow::CreateCards()
 {
-  unsigned int raw = 0;
-  unsigned int column = 0;
+  unsigned int raw = 1;
+  unsigned int column = 1;
   for (unsigned int i = 0; i < CARD_COUNT; ++i) {
     grid_->addWidget(&cards_.at(i),
       static_cast<int>(raw), static_cast<int>(column));
     cards_.at(i).setText(QString::number(raw) + ", " + QString::number(column));
-    cards_.at(i).SetPosition(raw, column);
+    cards_.at(i).SetPosition(static_cast<int>(raw), static_cast<int>(column));
     column++;
-    if (column == FIELD_SIZE) {
-      column = 0;
+    if (column == FIELD_SIZE + 1) {
+      column = 1;
       raw++;
     }
   }
@@ -63,5 +64,28 @@ MainWindow::ProcessCard()
       break;
     default:
       active_cards_pair_ = {nullptr, nullptr};
+  }
+}
+
+void
+MainWindow::CreateBorders()
+{
+  unsigned int raw = 0;
+  unsigned int column = 0;
+  for (unsigned int i = 0; i < BORDER_CARD_COUNT; ++i) {
+    while (raw != 0 && raw != (FRAME_SIZE - 1)
+           && column != 0 && column != (FRAME_SIZE - 1)) {
+      column++;
+    }
+    grid_->addWidget(&borders_.at(i),
+      static_cast<int>(raw), static_cast<int>(column));
+    borders_.at(i).setFixedSize(50, 50);
+    borders_.at(i).setText(QString::number(raw)
+      + ", " + QString::number(column));
+    column++;
+    if (column == FRAME_SIZE) {
+      column = 0;
+      raw++;
+    }
   }
 }

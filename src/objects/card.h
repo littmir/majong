@@ -22,7 +22,6 @@ public slots:
   SetInactive();
 
 private:
-  const unsigned int card_side_size_ = 50;
   bool is_active_ = false;
 };
 

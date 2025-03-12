@@ -14,6 +14,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
   main.cpp
+  src/common.h
   src/objects/border.cpp
   src/objects/border.h
   src/objects/card.cpp

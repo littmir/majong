@@ -1,5 +1,6 @@
 #include "src/windows/mainwindow.h"
 
+#include "common.h"
 #include "objects/card.h"
 
 #include <qgridlayout.h>
@@ -79,7 +80,7 @@ MainWindow::CreateBorders()
     }
     grid_->addWidget(&borders_.at(i),
       static_cast<int>(raw), static_cast<int>(column));
-    borders_.at(i).setFixedSize(50, 50);
+    borders_.at(i).setFixedSize(CARD_SIZE, CARD_SIZE);
     borders_.at(i).setText(QString::number(raw)
       + ", " + QString::number(column));
     column++;

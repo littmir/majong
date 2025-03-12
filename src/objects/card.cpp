@@ -1,9 +1,10 @@
 #include "card.h"
 
+#include "common.h"
+
 Card::Card()
 {
-  setFixedSize(static_cast<int>(card_side_size_),
-    static_cast<int>(card_side_size_));
+  setFixedSize(CARD_SIZE, CARD_SIZE);
 
   setCheckable(true);
 }

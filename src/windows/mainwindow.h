@@ -1,10 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "objects/card.h"
+
 #include <array>
 
 #include <qobjectdefs.h>
-#include <qpushbutton.h>
 #include <qwidget.h>
 
 /// Size of a one side of the square cards field
@@ -25,7 +26,7 @@ public:
 private:
   QGridLayout *grid_ = nullptr;
 
-  std::array<QPushButton, CARD_COUNT> cards_;
+  std::array<Card, CARD_COUNT> cards_;
 
   void
   CreateCards();

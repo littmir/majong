@@ -14,6 +14,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
   main.cpp
+  src/objects/card.cpp
+  src/objects/card.h
   src/windows/mainwindow.cpp
   src/windows/mainwindow.h
 )

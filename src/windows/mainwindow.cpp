@@ -1,6 +1,7 @@
 #include "src/windows/mainwindow.h"
 
 #include "objects/card.h"
+#include "objects/line.h"
 
 #include <qgridlayout.h>
 #include <qhashfunctions.h>
@@ -65,6 +66,9 @@ MainWindow::ProcessCard()
     default:
       active_cards_pair_ = {nullptr, nullptr};
   }
+
+  if (active_card_count_ == 2)
+    DrawLineBetweenCards();
 }
 
 void
@@ -80,12 +84,23 @@ MainWindow::CreateBorders()
     grid_->addWidget(&borders_.at(i),
       static_cast<int>(raw), static_cast<int>(column));
     borders_.at(i).setFixedSize(CARD_SIZE, CARD_SIZE);
-    borders_.at(i).setText(QString::number(raw)
-      + ", " + QString::number(column));
+    //borders_.at(i).setText(QString::number(raw)
+    //  + ", " + QString::number(column));
+    borders_.at(i).SetPosition(raw, column);
     column++;
     if (column == FRAME_SIZE) {
       column = 0;
       raw++;
     }
   }
+}
+
+
+void
+MainWindow::DrawLineBetweenCards()
+{
+  line_ = new Line(Line::LineForm::Corner, Line::CornerType::LeftTopCorner);
+  auto pair = active_cards_pair_.first->GetPosition();
+
+  grid_->addWidget(line_, 4, 2, Qt::AlignCenter);
 }

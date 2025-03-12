@@ -21,6 +21,8 @@ set(PROJECT_SOURCES
   src/objects/card.h
   src/objects/gameobject.cpp
   src/objects/gameobject.h
+  src/objects/line.cpp
+  src/objects/line.h
   src/windows/mainwindow.cpp
   src/windows/mainwindow.h
 )

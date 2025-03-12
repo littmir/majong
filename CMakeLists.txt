@@ -14,8 +14,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
   main.cpp
-  mainwindow.cpp
-  mainwindow.h
+  src/windows/mainwindow.cpp
+  src/windows/mainwindow.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -23,6 +23,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 else()
   add_executable(majong ${PROJECT_SOURCES})
 endif()
+
+target_include_directories(majong PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/windows
+  ${CMAKE_CURRENT_SOURCE_DIR}/objects
+)
 
 target_link_libraries(majong PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 

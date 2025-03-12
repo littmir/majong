@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "src/windows/mainwindow.h"
 
 #include <qapplication.h>
 
